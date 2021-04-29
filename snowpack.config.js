@@ -5,5 +5,5 @@ module.exports = {
     src: { url: '/dist' },
   },
   plugins: ['@snowpack/plugin-typescript'],
-  workspaceRoot: '../..'
+  workspaceRoot: __dirname
 };

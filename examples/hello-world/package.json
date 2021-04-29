@@ -8,5 +8,8 @@
     },
     "dependencies": {
         "@todo/core": "0.0.1"
+    },
+    "snowpack": {
+        "extends": "../../snowpack.config.js"
     }
 }
