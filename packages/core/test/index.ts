@@ -1,12 +1,10 @@
-import { suite, test } from 'uvu';
+
+import { test } from 'uvu';
 import * as assert from 'uvu/assert';
+import * as mod from '../src';
 
-import fn from '../src/index';
-
-const tests = suite('test');
-
-tests('should be a function', () => {
-	assert.type(fn, 'function');
+test('default', () => {
+	assert.type(mod.default, 'function');
 });
 
-test.run()
+test.run();

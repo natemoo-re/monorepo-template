@@ -9,7 +9,7 @@
   ],
   "scripts": {
     "build": "npm run build --workspace @todo/core",
-    "test": "uvu packages test -i fixtures"
+    "test": "uvu -r ts-node/register packages test -i fixtures"
   },
   "volta": {
     "node": "14.16.1",
@@ -17,8 +17,8 @@
   },
   "devDependencies": {
     "@snowpack/plugin-typescript": "^1.2.1",
-    "esbuild-register": "^2.5.0",
     "snowpack": "^3.3.5",
+    "ts-node": "^9.1.1",
     "uvu": "^0.5.1"
   }
 }
