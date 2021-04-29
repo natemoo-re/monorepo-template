@@ -1,0 +1,53 @@
+name: CI
+
+on:
+  push:
+    paths-ignore:
+      - 'docs/**'
+      - 'examples/**'
+    branches:
+    - master
+  pull_request:
+    paths-ignore:
+      - 'docs/**'
+      - 'examples/**'
+    branches:
+    - main
+
+jobs:
+  test:
+    name: Node.js v${{ matrix.nodejs }} (${{ matrix.os }})
+    runs-on: ${{ matrix.os }}
+    timeout-minutes: 3
+    strategy:
+      matrix:
+        nodejs: [12, 14]
+        os: [ubuntu-latest, windows-latest, macOS-latest]
+    steps:
+    - uses: actions/checkout@v2
+    - uses: actions/setup-node@v1
+      with:
+        node-version: ${{ matrix.nodejs }}
+
+    - name: Get npm cache directory
+      id: npm-cache-dir
+      run: |
+        echo "::set-output name=dir::$(npm config get cache)"
+
+    - name: Cache node modules
+      uses: actions/cache@v2
+      id: npm-cache # use this to check for `cache-hit` ==> if: steps.npm-cache.outputs.cache-hit != 'true'
+      with:
+        path: ${{ steps.npm-cache-dir.outputs.dir }}
+        key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+        restore-keys: |
+          ${{ runner.os }}-node-
+
+    - name: Install Dependencies
+      run: npm ci
+
+    - name: Build
+      run: npm build
+
+    - name: Test
+      run: npm test

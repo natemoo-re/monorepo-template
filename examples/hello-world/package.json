@@ -1,0 +1,12 @@
+{
+    "name": "@example/hello-world",
+    "private": true,
+    "version": "0.0.1",
+    "scripts": {
+        "start": "snowpack dev",
+        "build": "snowpack build"
+    },
+    "dependencies": {
+        "@todo/core": "0.0.1"
+    }
+}

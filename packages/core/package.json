@@ -1,0 +1,19 @@
+{
+    "name": "@todo/core",
+    "version": "0.0.1",
+    "type": "module",
+    "main": "./dist/index.js",
+    "types": "./dist",
+    "exports": {
+        ".": "./dist/index.js"
+    },
+    "scripts": {
+        "start": "todo dev src/index.ts",
+        "build": "todo build src/index.ts",
+        "postbuild": "tsc",
+        "report": "todo size dist"
+    },
+    "devDependencies": {
+        "@todo/scripts": "0.0.1"
+    }
+}

@@ -1,0 +1,24 @@
+{
+  "name": "monorepo-template",
+  "private": true,
+  "version": "0.0.0",
+  "workspaces": [
+    "packages/*",
+    "examples/*",
+    "scripts"
+  ],
+  "scripts": {
+    "build": "npm run build --workspace @todo/core",
+    "test": "uvu packages test -i fixtures"
+  },
+  "volta": {
+    "node": "14.16.1",
+    "npm": "7.11.1"
+  },
+  "devDependencies": {
+    "@snowpack/plugin-typescript": "^1.2.1",
+    "esbuild-register": "^2.5.0",
+    "snowpack": "^3.3.5",
+    "uvu": "^0.5.1"
+  }
+}
